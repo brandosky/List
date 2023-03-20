@@ -25,7 +25,7 @@ public class ArrayList implements List {
         if(array.length == size){
             increaseSize();
         }
-        array[0]=data;
+        array[i]=data;
         size++;
     }
     public void remove(int index){
