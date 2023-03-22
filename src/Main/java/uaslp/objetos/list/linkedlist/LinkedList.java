@@ -3,15 +3,15 @@ package uaslp.objetos.list.linkedlist;
 import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.List;
 
-public class LinkedList implements List {
+public class LinkedList <T>implements List<T>{
 
-    private Node head;
-    private Node tail;
+    private Node<T> head;
+    private Node<T> tail;
     private int size;
 
 
-public void addAtTail(String data){
-        Node node =new Node();
+public void addAtTail(T data){
+        Node<T> node =new Node<>(data);
 
         node.data=data;
         if(size == 0){
@@ -24,8 +24,8 @@ public void addAtTail(String data){
         size++;
     }
 
-public void addAtFront(String data){
-    Node node =new Node();
+public void addAtFront(T data){
+    Node<T> node =new Node<>(data);
 
     node.setData(data);
     if(size == 0){
@@ -39,7 +39,7 @@ public void addAtFront(String data){
 }
 
 public void remove(int index) {
-   Iterator iterator=getIterator();
+   Iterator<T>iterator=getIterator();
    int currentIndex=0;
     if (index < 0 || index >= size){
         return;
@@ -53,11 +53,11 @@ public void remove(int index) {
 
 }
 public void removeAll(){
-    Iterator iterator=getIterator();
+    Iterator <T>iterator=getIterator();
 
 while(iterator.hasNext()){
 
-  Node aux=iterator.getCurrentNode();
+  Node<T>aux=iterator.getCurrentNode();
 
   if(head==aux && tail==aux){
       head=null;
@@ -78,8 +78,8 @@ while(iterator.hasNext()){
 }
     size=0;
 }
-public void setAt(int index, String data) {
-  Iterator iterator =getIterator();
+public void setAt(int index,T data) {
+  Iterator<T>iterator =getIterator();
     int currentIndex=0;
     if (index < 0 || index >= size) {
         return;
@@ -90,8 +90,8 @@ public void setAt(int index, String data) {
     iterator.getCurrentNode().data=data;
     }
 
-public String getAt(int index) {
- Iterator iterator=getIterator();
+public T getAt(int index) {
+ Iterator<T>iterator=getIterator();
     int current_index=0;
 
     if (index < 0 || index >= size) {
@@ -104,11 +104,11 @@ public String getAt(int index) {
 }
 
 
-public void removeAllwithValue(String data) {
-    Iterator iterator=getIterator();
+public void removeAllwithValue(T data) {
+    Iterator<T>iterator=getIterator();
 
     while (iterator.hasNext()) {
-        Node aux=iterator.getCurrentNode();
+        Node<T> aux=iterator.getCurrentNode();
         if(aux.data.equals(data)){
             if(head==aux && tail==aux){
                 head=null;
@@ -135,7 +135,7 @@ public void removeAllwithValue(String data) {
     }
     public Iterator getIterator() {
 
-        return new LinkedListIterator(head){
+        return new LinkedListIterator<>(head){
 
 
     };

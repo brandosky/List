@@ -2,9 +2,8 @@ package uaslp.objetos.list;
 
 import uaslp.objetos.list.linkedlist.Node;
 
-public interface Iterator {
+public interface Iterator <T> {
     boolean hasNext();
-    String next();
-
+    T next();
     Node getCurrentNode();
 }

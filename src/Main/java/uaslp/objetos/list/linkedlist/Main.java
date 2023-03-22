@@ -10,11 +10,13 @@ import uaslp.objetos.list.arraylist.ArrayListIterator;
 public class Main {
     public static void main(String[] args) {
         ArrayList arrayList = new ArrayList();
-        List lista1 = new LinkedList();
-        List lista2 = new ArrayList();
+        List<String>lista1 = new LinkedList();
+        List<Integer>lista2 = new ArrayList();
 
         lista1.addAtFront("hola");
         lista1.addAtTail("dale");
+        lista1.addAtFront("hola1");
+        lista1.addAtTail("dale2");
         printList(lista1);
         lista1.remove(2);
         printList(lista1);
@@ -23,21 +25,21 @@ public class Main {
         lista1.getAt(2);
         lista1.setAt(7,"juan");
         printList(lista1);
-        lista1.removeAllwithValue("hola");
+        lista1.removeAllwithValue("hola1");
         printList(lista1);
         lista1.getSize();
         lista1.getIterator();
 
-        lista2.addAtFront("hi");
-        lista2.addAtTail("give");
+        lista2.addAtFront(1);
+        lista2.addAtTail(2);
         printList(lista2);
         lista2.remove(1);
         printList(lista2);
         lista2.removeAll();
         lista2.getAt(1);
-        lista2.setAt(1,"juan");
+        lista2.setAt(1,3);
         printList(lista2);
-        lista2.removeAllwithValue("hi");
+        lista2.removeAllwithValue(2);
         lista2.getSize();
         lista2.getIterator();
     }

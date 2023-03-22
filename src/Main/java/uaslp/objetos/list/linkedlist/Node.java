@@ -1,15 +1,18 @@
 package uaslp.objetos.list.linkedlist;
 
- public class Node { //default (package private)
-     String data;
-    Node next;
-     Node previous;
+ public class Node <O>{ //default (package private)
+     O data;
+    Node<O>next;
+     Node<O>previous;
 
-    public String getData() {
+     Node(O data){
+         this.data=data;
+     }
+    public O getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(O data) {
         this.data = data;
     }
 

@@ -5,22 +5,22 @@ import uaslp.objetos.list.List;
 import uaslp.objetos.list.linkedlist.LinkedListIterator;
 import uaslp.objetos.list.linkedlist.Node;
 
-public class ArrayList implements List {
+public class ArrayList <T>implements List<T> {
     private static final int INITIAL_SIZE=10;
-    private String[]array;
+    private T []array;//se puede T o object porque hereda de object pero se podrian perder validaciones
     private int size;
 
     public ArrayList(){
-        array=new String[INITIAL_SIZE];
+        array=(T[]) (new Object[INITIAL_SIZE]);
     }
-    public void addAtTail(String data){
+    public void addAtTail(T data){
         if(array.length == size){
             increaseSize();
         }
         array[size]=data;
         size++;
     }
-    public  void addAtFront(String data){
+    public  void addAtFront(T data){
         int i=0;
         if(array.length == size){
             increaseSize();
@@ -42,21 +42,21 @@ public class ArrayList implements List {
             }
         size=0;
     }
-    public  void setAt(int index, String data){
+    public  void setAt(int index, T data){
         int i=0;
         while(i!=index){
             i++;
         }
         array[i]=data;
     }
-    public String getAt(int index){
+    public T getAt(int index){
         int i=0;
         while(i!=index){
             i++;
         }
-        return array[i];
+        return (T)array[i];
     }
-    public  void removeAllwithValue(String data){
+    public  void removeAllwithValue(T data){
     int i=0;
         while (i!=size){
         i++;
@@ -65,10 +65,8 @@ public class ArrayList implements List {
         }
     }
     }
-    public Iterator getIterator() {
-        return new ArrayListIterator(this) {
-
-
+    public Iterator <T>getIterator() {
+        return (Iterator<T>) new ArrayListIterator<>(this) {
         };
     }
 
@@ -77,11 +75,13 @@ public class ArrayList implements List {
     }
 
     private void increaseSize(){
-        String []newArray=new String[array.length*2];
+        Object[]newArray=new String[array.length*2];
 
-        for(int i=0;i< array.length;i++){
-            newArray[i]=array[i];
+        Iterator<T> iterator=getIterator();
+        int Index=0;
+        while(iterator.hasNext()){
+            newArray[Index]=iterator.next();
+            Index++;
         }
-        array=newArray;
     }
 }
